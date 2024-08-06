@@ -1,0 +1,9 @@
+[Unit]
+Description=Temporizador para actualizar estadísticas del sistema
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

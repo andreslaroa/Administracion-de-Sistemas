@@ -1,0 +1,9 @@
+[Unit]
+Description=Temporizador para enviar estadísticas del sistema por correo electrónico diariamente
+
+[Timer]
+OnCalendar=*-*-* 00:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

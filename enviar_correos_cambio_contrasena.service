@@ -1,0 +1,9 @@
+[Unit]
+Description=Enviar correos de cambios de contrasena
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/perl /usr/lib/cgi-bin/enviar_correos_cambios_contrasena.pl
+
+[Install]
+WantedBy=multi-user.target

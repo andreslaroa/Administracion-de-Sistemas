@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Registro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Confirmar Registro</h1>
+        <form id="registroForm" action="/cgi-bin/confirmar_registro.pl" method="post">
+            <label for="token">Ingresa el Token:</label>
+            <input type="text" id="token" name="token" required>
+            <br><br>
+            <input type="submit" value="Enviar">
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('registroForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar envío por defecto del formulario
+
+            var token = document.getElementById('token').value;
+
+            // Realizar una solicitud AJAX usando Fetch API
+            fetch('/cgi-bin/confirmar_registro.pl', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'token=' + encodeURIComponent(token)
+            })
+            .then(response => response.text())
+            .then(data => {
+                // Mostrar mensaje de respuesta del servidor
+                document.getElementById('message').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error al procesar la solicitud:', error);
+            });
+        });
+    </script>
+</body>
+</html>

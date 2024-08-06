@@ -1,0 +1,9 @@
+[Unit]
+Description=Envío diario de estadísticas del sistema por correo electrónico
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/perl /usr/lib/cgi-bin/email_stats.pl
+
+[Install]
+WantedBy=multi-user.target

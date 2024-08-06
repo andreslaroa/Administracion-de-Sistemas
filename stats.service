@@ -1,0 +1,9 @@
+[Unit]
+Description=Actualización automática de estadísticas del sistema
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/perl /usr/lib/cgi-bin/stats.pl
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Eliminar usuarios no confirmados
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/perl /usr/lib/cgi-bin/eliminar_usuarios_sin_confirmacion.pl
+
+[Install]
+WantedBy=multi-user.target

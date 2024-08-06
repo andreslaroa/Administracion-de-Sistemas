@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carldres - Proveedor de Servicios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 0 10px;
+        }
+        nav a:hover {
+            color: #000;
+            font-weight: bold;
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        #left-content {
+            width: 60%;
+        }
+        #right-content {
+            width: 30%;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+        #server-ascii-art {
+            font-family: monospace;
+            font-size: 24px;
+        }
+        .active-title {
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .inactive-title {
+            color: red;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .service {
+            margin-bottom: 5px;
+        }
+        .active {
+            color: green;
+        }
+        .inactive {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Carldres - Proveedor de Servicios</h1>
+        <p>Ofrecemos soluciones eficaces para tus necesidades</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="registro.html">Registrarse</a>
+        <a href="login.html">Iniciar Sesión</a>
+        <a href="contacto.html">Contactar</a>
+    </nav>
+
+    <div class="main-content">
+        <div id="left-content">
+            <h2>¿Quiénes Somos?</h2>
+            <p>Somos una empresa comprometida con ofrecer servicios de calidad en el sector de las telecomunicaciones. Nuestro objetivo es satisfacer las necesidades de nuestros clientes de manera eficiente y confiable.</p>
+            <p>Para más información, contáctanos o visita nuestras oficinas.</p>
+
+            <!-- Título de Servicios Activos -->
+            <h3 class="active-title">Servicios Activos</h3>
+            <!-- Div para mostrar los servicios activos -->
+            <div id="active-services"></div>
+
+            <!-- Título de Servicios Inactivos -->
+            <h3 class="inactive-title">Servicios Inactivos</h3>
+            <!-- Div para mostrar los servicios inactivos -->
+            <div id="inactive-services"></div>
+        </div>
+
+        <div id="right-content">
+            <pre id="server-ascii-art">
+               .--.
+              |o_o |
+              |:_/ |
+             //   \ \
+            (|     | )
+           /'\_   _/`\
+           \___)=(___/
+            </pre>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Carldres - Proveedor de Servicios</p>
+    </footer>
+
+    <script>
+        // Función para realizar una solicitud HTTP GET a obtener_servicios.pl y mostrar el resultado
+        function obtenerServicios() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/cgi-bin/obtener_servicios.pl', true);
+
+            xhr.onload = function() {
+                if (xhr.status >= 200 && xhr.status < 400) {
+                    var servicios = JSON.parse(xhr.responseText);
+                    mostrarServicios(servicios);
+                } else {
+                    console.error('Error al obtener servicios:', xhr.statusText);
+                }
+            };
+
+            xhr.onerror = function() {
+                console.error('Error de red al intentar obtener servicios.');
+            };
+
+            xhr.send();
+        }
+
+        // Función para mostrar los servicios en la página
+        function mostrarServicios(servicios) {
+            var activeServices = document.getElementById('active-services');
+            var inactiveServices = document.getElementById('inactive-services');
+
+            // Mostrar servicios activos
+            servicios.active.forEach(function(servicio) {
+                var servicioElement = document.createElement('p');
+                servicioElement.textContent = servicio;
+                servicioElement.classList.add('service');
+                servicioElement.classList.add('active');
+                activeServices.appendChild(servicioElement);
+            });
+
+            // Mostrar servicios inactivos
+            servicios.inactive.forEach(function(servicio) {
+                var servicioElement = document.createElement('p');
+                servicioElement.textContent = servicio;
+                servicioElement.classList.add('service');
+                servicioElement.classList.add('inactive');
+                inactiveServices.appendChild(servicioElement);
+            });
+        }
+
+        // Llamar a la función para obtener y mostrar los servicios al cargar la página
+        window.onload = function() {
+            obtenerServicios();
+        };
+    </script>
+</body>
+</html>

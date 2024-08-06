@@ -1,0 +1,9 @@
+[Unit]
+Description=Temporizador para ejecutar el script de creación de usuarios
+
+[Timer]
+OnCalendar=*-*-* *:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

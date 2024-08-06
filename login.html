@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Carldres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header, footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+        nav {
+            background-color: #f4f4f4;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            padding: 0 10px;
+        }
+        nav a:hover {
+            color: #000;
+            font-weight: bold;
+        }
+        .main-content {
+            padding: 20px;
+            text-align: center;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            width: 300px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Carldres - Proveedor de Servicios</h1>
+        <p>Ofrecemos soluciones eficaces para tus necesidades</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="registro.html">Registrarse</a>
+        <a href="login.html">Iniciar Sesión</a>
+        <a href="contacto.html">Contactar</a>
+    </nav>
+
+    <div class="main-content">
+        <h2>Iniciar Sesión</h2>
+        <form action="login.php" method="post">
+            <label for="username">Usuario:</label><br>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <label for="password">Contraseña:</label><br>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <input type="submit" value="Ingresar">
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Carldres - Proveedor de Servicios</p>
+    </footer>
+</body>
+</html>

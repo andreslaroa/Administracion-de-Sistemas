@@ -1,0 +1,6 @@
+[Unit]
+Description=Cambiar contraseñas del sistema y base de datos
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/perl /usr/lib/cgi-bin/cambiar_contrasena_sistema.pl
